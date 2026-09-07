@@ -1,0 +1,10 @@
+{
+  "detected": true,
+  "latitude": 13.1,
+  "longitude": 80.3,
+  "confidence": 0.77,
+  "contrast_vs_background": 66.3,
+  "area_fraction_of_scene": 0.0493,
+  "aspect_ratio": 1.5,
+  "num_candidate_regions": 2
+}
