@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0",
+  "analysis": {
+    "type": "AIS + simplified drift Potential Source Vessel ranking",
+    "status": "MVP / demonstration",
+    "important_notice": "Scores indicate evidence strength only. They do not establish legal responsibility or prove that a vessel caused a spill."
+  },
+  "spill": {
+    "latitude": 13.1,
+    "longitude": 80.3,
+    "timestamp": "2026-09-07T10:30:00"
+  },
+  "drift_model": {
+    "current_speed_knots": 1.08,
+    "current_heading_deg": 70.0,
+    "wind_speed_knots": 5.0,
+    "wind_heading_deg": 70.0,
+    "windage_factor": 0.03,
+    "description": "Deterministic demo model: constant surface current plus small windage component.",
+    "scientific_accuracy": "Not intended for operational ocean forecasting."
+  },
+  "candidate_filter": {
+    "candidate_radius_km": 45.0,
+    "max_time_before_spill_hours": 18.0,
+    "input_vessels": 6,
+    "relevant_candidates": 5,
+    "rejected_candidates": [
+      {
+        "vessel_id": "VESSEL_F",
+        "distance_km": 70.45,
+        "hours_before_spill": 30.5,
+        "reason": "outside distance/time/movement filter"
+      }
+    ]
+  },
+  "scoring_weights": {
+    "spatial_match": 0.3,
+    "temporal_match": 0.2,
+    "drift_consistency": 0.25,
+    "trajectory_match": 0.15,
+    "ais_reliability": 0.1
+  },
+  "ranked_vessels": [
+    {
+      "vessel_id": "VESSEL_A",
+      "score": 0.7395,
+      "score_percent": 73.95,
+      "confidence": "Medium",
+      "evidence": {
+        "spatial_match": 0.8736,
+        "temporal_match": 0.9394,
+        "drift_consistency": 0.5546,
+        "trajectory_match": 0.3523,
+        "ais_reliability": 0.98
+      },
+      "weighted_contribution": {
+        "spatial_match": 0.2621,
+        "temporal_match": 0.1879,
+        "drift_consistency": 0.1387,
+        "trajectory_match": 0.0528,
+        "ais_reliability": 0.098
+      },
+      "reason": "Strong AIS reliability, temporal, spatial agreement; weaker evidence: trajectory. Simulated oil miss distance: 7.1 km.",
+      "candidate_filter": {
+        "distance_km": 5.69,
+        "hours_before_spill": 4.5,
+        "relevant": true
+      },
+      "trajectory": {
+        "vessel_heading_deg": 145.0,
+        "source_to_spill_bearing_deg": 28.4,
+        "heading_error_deg": 116.6
+      },
+      "what_if_drift": {
+        "model": "simplified_constant_current_plus_windage",
+        "valid": true,
+        "hours_elapsed": 4.5,
+        "drift_velocity_kmh": {
+          "east": 2.141,
+          "north": 0.779
+        },
+        "drift_direction_deg": 70.0,
+        "predicted_oil_position": {
+          "latitude": 13.086495,
+          "longitude": 80.363827
+        },
+        "predicted_miss_distance_km": 7.07
+      },
+      "ais_observation": {
+        "timestamp": "2026-09-07T06:00:00",
+        "latitude": 13.055,
+        "longitude": 80.275,
+        "speed_knots": 12.4,
+        "heading_deg": 145.0
+      },
+      "rank": 1
+    },
+    {
+      "vessel_id": "VESSEL_D",
+      "score": 0.7264,
+      "score_percent": 72.64,
+      "confidence": "Medium",
+      "evidence": {
+        "spatial_match": 0.825,
+        "temporal_match": 0.6456,
+        "drift_consistency": 0.5814,
+        "trajectory_match": 0.7256,
+        "ais_reliability": 0.956
+      },
+      "weighted_contribution": {
+        "spatial_match": 0.2475,
+        "temporal_match": 0.1291,
+        "drift_consistency": 0.1453,
+        "trajectory_match": 0.1088,
+        "ais_reliability": 0.0956
+      },
+      "reason": "Strong AIS reliability, spatial agreement. Simulated oil miss distance: 6.5 km.",
+      "candidate_filter": {
+        "distance_km": 7.87,
+        "hours_before_spill": 1.5,
+        "relevant": true
+      },
+      "trajectory": {
+        "vessel_heading_deg": 75.0,
+        "source_to_spill_bearing_deg": 124.4,
+        "heading_error_deg": 49.4
+      },
+      "what_if_drift": {
+        "model": "simplified_constant_current_plus_windage",
+        "valid": true,
+        "hours_elapsed": 1.5,
+        "drift_velocity_kmh": {
+          "east": 2.141,
+          "north": 0.779
+        },
+        "drift_direction_deg": 70.0,
+        "predicted_oil_position": {
+          "latitude": 13.150498,
+          "longitude": 80.269619
+        },
+        "predicted_miss_distance_km": 6.51
+      },
+      "ais_observation": {
+        "timestamp": "2026-09-07T09:00:00",
+        "latitude": 13.14,
+        "longitude": 80.24,
+        "speed_knots": 7.2,
+        "heading_deg": 75.0
+      },
+      "rank": 2
+    },
+    {
+      "vessel_id": "VESSEL_E",
+      "score": 0.6082,
+      "score_percent": 60.82,
+      "confidence": "Medium",
+      "evidence": {
+        "spatial_match": 0.7025,
+        "temporal_match": 1.0,
+        "drift_consistency": 0.1756,
+        "trajectory_match": 0.4424,
+        "ais_reliability": 0.872
+      },
+      "weighted_contribution": {
+        "spatial_match": 0.2108,
+        "temporal_match": 0.2,
+        "drift_consistency": 0.0439,
+        "trajectory_match": 0.0664,
+        "ais_reliability": 0.0872
+      },
+      "reason": "Strong temporal, AIS reliability agreement; weaker evidence: drift, trajectory. Simulated oil miss distance: 20.9 km.",
+      "candidate_filter": {
+        "distance_km": 13.39,
+        "hours_before_spill": 5.0,
+        "relevant": true
+      },
+      "trajectory": {
+        "vessel_heading_deg": 285.0,
+        "source_to_spill_bearing_deg": 184.6,
+        "heading_error_deg": 100.4
+      },
+      "what_if_drift": {
+        "model": "simplified_constant_current_plus_windage",
+        "valid": true,
+        "hours_elapsed": 5.0,
+        "drift_velocity_kmh": {
+          "east": 2.141,
+          "north": 0.779
+        },
+        "drift_direction_deg": 70.0,
+        "predicted_oil_position": {
+          "latitude": 13.254994,
+          "longitude": 80.408763
+        },
+        "predicted_miss_distance_km": 20.87
+      },
+      "ais_observation": {
+        "timestamp": "2026-09-07T05:30:00",
+        "latitude": 13.22,
+        "longitude": 80.31,
+        "speed_knots": 10.5,
+        "heading_deg": 285.0
+      },
+      "rank": 3
+    },
+    {
+      "vessel_id": "VESSEL_B",
+      "score": 0.5909,
+      "score_percent": 59.09,
+      "confidence": "Low",
+      "evidence": {
+        "spatial_match": 0.6501,
+        "temporal_match": 0.7788,
+        "drift_consistency": 0.0729,
+        "trajectory_match": 0.8577,
+        "ais_reliability": 0.932
+      },
+      "weighted_contribution": {
+        "spatial_match": 0.195,
+        "temporal_match": 0.1558,
+        "drift_consistency": 0.0182,
+        "trajectory_match": 0.1287,
+        "ais_reliability": 0.0932
+      },
+      "reason": "Strong AIS reliability, trajectory, temporal agreement; weaker evidence: drift. Simulated oil miss distance: 31.4 km.",
+      "candidate_filter": {
+        "distance_km": 15.75,
+        "hours_before_spill": 7.0,
+        "relevant": true
+      },
+      "trajectory": {
+        "vessel_heading_deg": 210.0,
+        "source_to_spill_bearing_deg": 235.6,
+        "heading_error_deg": 25.6
+      },
+      "what_if_drift": {
+        "model": "simplified_constant_current_plus_windage",
+        "valid": true,
+        "hours_elapsed": 7.0,
+        "drift_velocity_kmh": {
+          "east": 2.141,
+          "north": 0.779
+        },
+        "drift_direction_deg": 70.0,
+        "predicted_oil_position": {
+          "latitude": 13.228992,
+          "longitude": 80.558245
+        },
+        "predicted_miss_distance_km": 31.43
+      },
+      "ais_observation": {
+        "timestamp": "2026-09-07T03:30:00",
+        "latitude": 13.18,
+        "longitude": 80.42,
+        "speed_knots": 9.8,
+        "heading_deg": 210.0
+      },
+      "rank": 4
+    },
+    {
+      "vessel_id": "VESSEL_C",
+      "score": 0.4628,
+      "score_percent": 46.28,
+      "confidence": "Low",
+      "evidence": {
+        "spatial_match": 0.3103,
+        "temporal_match": 0.7788,
+        "drift_consistency": 0.0899,
+        "trajectory_match": 0.7459,
+        "ais_reliability": 0.796
+      },
+      "weighted_contribution": {
+        "spatial_match": 0.0931,
+        "temporal_match": 0.1558,
+        "drift_consistency": 0.0225,
+        "trajectory_match": 0.1119,
+        "ais_reliability": 0.0796
+      },
+      "reason": "Strong AIS reliability, temporal agreement; weaker evidence: drift, spatial. Simulated oil miss distance: 28.9 km.",
+      "candidate_filter": {
+        "distance_km": 31.04,
+        "hours_before_spill": 3.0,
+        "relevant": true
+      },
+      "trajectory": {
+        "vessel_heading_deg": 90.0,
+        "source_to_spill_bearing_deg": 135.7,
+        "heading_error_deg": 45.7
+      },
+      "what_if_drift": {
+        "model": "simplified_constant_current_plus_windage",
+        "valid": true,
+        "hours_elapsed": 3.0,
+        "drift_velocity_kmh": {
+          "east": 2.141,
+          "north": 0.779
+        },
+        "drift_direction_deg": 70.0,
+        "predicted_oil_position": {
+          "latitude": 13.320996,
+          "longitude": 80.159277
+        },
+        "predicted_miss_distance_km": 28.91
+      },
+      "ais_observation": {
+        "timestamp": "2026-09-07T07:30:00",
+        "latitude": 13.3,
+        "longitude": 80.1,
+        "speed_knots": 14.2,
+        "heading_deg": 90.0
+      },
+      "rank": 5
+    }
+  ],
+  "highest_ranked_potential_source_vessel": "VESSEL_A"
+}
